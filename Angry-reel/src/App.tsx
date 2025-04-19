@@ -97,7 +97,8 @@ function App() {
             <header className="relative pt-16 pb-8 text-center z-10">
               <h1 className="text-5xl md:text-7xl font-bold text-pink-500 animate-bounce-slow inline-block relative">
               
-              I'm Sorry ⎛⎝ ≽  &gt;  ⩊   &lt; ≼ ⎠⎞
+              {/* I'm Sorry ⎛⎝ ≽  &gt;  ⩊   &lt; ≼ ⎠⎞ */}
+              I'm Sorry (╥﹏╥)
                 <span className="absolute -top-6 -right-6 animate-float-delay">
                   <Heart size={30} fill="#f472b6" stroke="#f472b6" />
                 </span>
