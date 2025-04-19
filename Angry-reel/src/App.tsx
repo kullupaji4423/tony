@@ -224,7 +224,7 @@ function App() {
               {/* Photo Gallery */}
               <section className="mb-16">
                 <h2 className="text-3xl font-comic text-pink-700 mb-6 text-center">
-                  Some of me...
+                  Some of me..you..and us!
                 </h2>
                 <PhotoGallery />
               </section>

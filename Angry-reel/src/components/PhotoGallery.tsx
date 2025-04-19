@@ -12,37 +12,37 @@ const PhotoGallery: React.FC = () => {
   const placeholderImages = [
     {
       url: img1,
-      caption: 'whyyy so madddd',
+      caption: '❤️❤️❤️',
       effect: 'WIWIWI!',
       effectColor: 'text-yellow-500'
     },
     {
       url: img2,
-      caption: 'will buy u melody if u maaf ',
+      caption: 'i loveeee youuuu princessss ',
       effect: 'YEYEY!',
       effectColor: 'text-blue-500'
     },
     {
       url: img3,
-      caption: 'hello princess',
+      caption: 'plzzz dont be mad 🙁',
       effect: 'WUWUWU!',
       effectColor: 'text-yellow-500'
     },
     {
       url:  img4,
-      caption: 'maaf me pls',
-      effect: 'HEHEH!',
+      caption: 'im not cute as you but maaf kr dooo',
+      effect: 'cutee!',
       effectColor: 'text-blue-500'
     },
     {
       url: img5,
       caption: 'again im solly',
-      effect: 'WIWIWI!',
+      effect: 'SOBSOB!',
       effectColor: 'text-yellow-500'
     },
     {
       url: img6,
-      caption: 'i lob u!',
+      caption: 'us!!!!❤️',
       effect: 'WUWUWU!',
       effectColor: 'text-blue-500'
     },
