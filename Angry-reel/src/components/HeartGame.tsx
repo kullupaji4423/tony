@@ -23,30 +23,37 @@ const HeartGame: React.FC = () => {
   ];
   const [tutorialStep, setTutorialStep] = useState(0);
 
+  // Makes a Gawd dam random heart
+  const makeRandomHeart = (id: number) => {
+    const isPowerUp = Math.random() < 0.1;
+    const speedFactor = difficulty === 'easy' ? 0.3 :
+                        difficulty === 'medium' ? 0.5 : 20;
+    return {
+      id,
+      x: Math.random() * 80 + 10,
+      y: Math.random() * 80 + 10,
+      size: Math.random() * 20 + 30,
+      speed: (Math.random() * 0.5 + 0.3) * speedFactor,
+      direction: Math.random() > 0.5 ? 1 : -1,
+      type: isPowerUp ? 'power-up' : 'normal',
+    };
+  };
+
   useEffect(() => {
     if (gameStarted && !showTutorial) {
-      // Create hearts based on difficulty
-      const heartCount = difficulty === 'easy' ? 15 : difficulty === 'medium' ? 12 : 10;
-      const speedFactor = difficulty === 'easy' ? 0.3 : difficulty === 'medium' ? 0.5 : 0.8;
+      const heartCount = difficulty === 'easy' ? 20 : 
+                        difficulty === 'medium' ? 10 : 1;
+
+      if (difficulty === 'hard') {
+        setHearts([makeRandomHeart(0)]);
+      } else {
+        // Use the heartCount variable from above
+        setHearts(
+          Array.from({ length: heartCount }, (_, i) => makeRandomHeart(i))
+        );
+      }
       
-      // Create hearts
-      const newHearts = Array.from({ length: heartCount }, (_, i) => {
-        // Add power-up hearts (10% chance)
-        const isPowerUp = Math.random() < 0.1;
-        
-        return {
-          id: i,
-          x: Math.random() * 80 + 10, // percentage
-          y: Math.random() * 80 + 10, // percentage
-          size: Math.random() * 20 + 30, // px
-          speed: (Math.random() * 0.5 + 0.3) * speedFactor, // speed factor
-          direction: Math.random() > 0.5 ? 1 : -1, // direction
-          type: isPowerUp ? 'power-up' : 'normal'
-        };
-      });
-      
-      setHearts(newHearts);
-      
+    
       // Set checkpoints
       setCheckpoints([1, 3, 5]);
       
@@ -114,13 +121,16 @@ const HeartGame: React.FC = () => {
   const popHeart = (id: number, type: string) => {
     if (!popped.includes(id)) {
       setPopped([...popped, id]);
-      
-      // If it's a power-up heart, count it as 2
-      if (type === 'power-up') {
-        setPowerUps([...powerUps, id]);
+      if (type === 'power-up') setPowerUps([...powerUps, id]);
+  
+      if (difficulty === 'hard') {
+        // spawn a brand new single heart with a fresh ID 
+        const newId = Date.now();  // simple unique id
+        setHearts([ makeRandomHeart(newId) ]);
       }
     }
   };
+  
 
   const resetGame = () => {
     setPopped([]);
@@ -337,8 +347,8 @@ const HeartGame: React.FC = () => {
                 <div className="speech-bubble relative bg-pink-100 p-4 rounded-lg mb-4">
                   <h3 className="text-xl font-comic text-pink-700 mb-2">You Did It!</h3>
                   <p className="font-handwriting text-gray-700">
-                    Just like you popped these hearts, you've touched mine in so many ways. 
-                    Thank you for being you, and for giving me a chance to make things right.
+                    Just like you popped these hearts... you've touched mine too!!
+                    Thank you princess for being you! and for giving me a chance to make things right !!! don't forget to try the hard level ...
                   </p>
                 </div>
                 
